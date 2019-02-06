@@ -38,9 +38,11 @@ dependencies {
 kotlin {
     targets {
         fromPreset(presets.android, 'android')
-        // This preset is for iPhone emulator
-        // Switch here to presets.iosArm64 (or iosArm32) to build library for iPhone device
-        fromPreset(presets.iosX64, 'ios') {
+        
+        final def iOSTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos") \
+                              ? presets.iosArm64 : presets.iosX64
+
+        fromPreset(iOSTarget, 'ios') {
             compilations.main.outputKinds('FRAMEWORK')
         }
     }
