@@ -5,7 +5,7 @@ expect class Sample() {
 }
 
 expect object Platform {
-    val name: String
+   val name: String
 }
 
 fun hello(): String = "Hello from ${Platform.name}"
@@ -14,6 +14,8 @@ class Proxy {
     fun proxyHello() = hello()
 }
 
-fun main(args: Array<String>) {
+fun main() {
     println(hello())
 }
+
+fun transformInput(input: String): String = "$input blah"
