@@ -2,22 +2,18 @@ package activities
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
-import interfaces.View
+import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_main.*
-import presenters.MainPresenter
-import reporting.AnalyticsHandler
-import sample.Platform
+import main.MainContract
+import main.MainPresenter
 import sample.R
-import sample.Sample
-import sample.transformInput
 
 
-class MainActivity : AppCompatActivity(), View {
-
-    private val presenter = MainPresenter(this, AnalyticsHandler())
+class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,12 +21,7 @@ class MainActivity : AppCompatActivity(), View {
 
         setSupportActionBar(activity_main_toolbar)
 
-        Sample().checkMe()
-//        textview.text = hello()
-        textview.text = transformInput(Platform.name)
-
-        activity_main_raised_button.setOnClickListener { presenter.onRaisedClicked() }
-        activity_main_flat_button.setOnClickListener { presenter.onFlatClicked() }
+        activity_main_edittext.afterTextChanged { presenter!!.handleWeightInput(it) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -41,14 +32,34 @@ class MainActivity : AppCompatActivity(), View {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean =
             when (item?.itemId) {
-//                R.id.menu_main_activity_settings -> presenter.onSettingsClicked()
                 R.id.menu_main_activity_settings -> {
-                    showMessage("Settings Clicked")
+                    presenter!!.handleSettingsClicked()
                     true
                 }
                 else -> super.onOptionsItemSelected(item)
             }
 
-    override fun showMessage(message: String) =
-        Snackbar.make(findViewById(R.id.activity_main_flat_button), message, Snackbar.LENGTH_LONG).show()
+    private fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) =
+        this.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(editable: Editable?) {
+                afterTextChanged.invoke(editable.toString())
+            }
+        })
+
+
+    override fun openSettings() {
+        Snackbar.make(activity_main_edittext, "open settings", Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun displayWeight() {
+        Snackbar.make(activity_main_edittext, "generate weight", Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun initPresenter() {
+        presenter = MainPresenter()
+    }
 }

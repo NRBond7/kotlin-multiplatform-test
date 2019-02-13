@@ -26,4 +26,20 @@
         <!--<item name="contentInsetStart">@dimen/first_keyline</item>-->
     </style>
 
+    <style name="HintText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorAccentDark</item>
+    </style>
+
+    <style name="ErrorText">
+        <item name="android:textColor">@color/error</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="EditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/colorAccentDark</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>
