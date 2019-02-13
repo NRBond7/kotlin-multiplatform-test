@@ -1,5 +1,6 @@
 package activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.text.Editable
@@ -50,10 +51,7 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
             }
         })
 
-
-    override fun openSettings() {
-        Snackbar.make(activity_main_edittext, "open settings", Snackbar.LENGTH_LONG).show()
-    }
+    override fun openSettings() = startActivity(Intent(this, SettingsActivity::class.java))
 
     override fun displayWeight() {
         Snackbar.make(activity_main_edittext, "generate weight", Snackbar.LENGTH_LONG).show()
