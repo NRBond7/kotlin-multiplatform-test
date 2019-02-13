@@ -37,7 +37,7 @@
             />
 
         <Button
-            android:id="@+id/activity_main_raised"
+            android:id="@+id/activity_main_raised_button"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
             />
 
         <Button
-            android:id="@+id/activity_main_flat"
+            android:id="@+id/activity_main_flat_button"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
