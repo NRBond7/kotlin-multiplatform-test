@@ -9,6 +9,13 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name ="android:windowBackground"> @drawable/bg_splash_screen</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
     <style name="MyToolbar" parent="Widget.AppCompat.Toolbar">
         <item name="theme">@style/ThemeOverlay.AppCompat.Light</item>
         <!--<item name="android:textColor">@android:color/white</item>-->

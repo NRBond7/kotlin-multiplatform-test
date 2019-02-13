@@ -1,7 +1,5 @@
 package sample
 
-import android.util.Log
-
 actual class Sample {
     actual fun checkMe() = 44
 }

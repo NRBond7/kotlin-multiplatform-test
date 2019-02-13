@@ -1,4 +1,4 @@
-package sample
+package activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +8,10 @@ import android.widget.TextView
 import interfaces.View
 import presenters.MainPresenter
 import reporting.AnalyticsHandler
+import sample.Platform
+import sample.R
+import sample.Sample
+import sample.transformInput
 
 class MainActivity : AppCompatActivity(), View {
 

@@ -6,7 +6,7 @@ import kotlin.test.assertTrue
 class SampleTests {
     @Test
     fun testMe() {
-        assertTrue(Sample().checkMe() > 0)
+        assertTrue(activities.Sample().checkMe() > 0)
     }
 
     @Test

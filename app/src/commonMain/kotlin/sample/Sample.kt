@@ -8,7 +8,7 @@ expect object Platform {
    val name: String
 }
 
-fun hello(): String = "Hello from ${Platform.name}"
+fun hello(): String = "Hello from ${sample.Platform.name}"
 
 class Proxy {
     fun proxyHello() = hello()
