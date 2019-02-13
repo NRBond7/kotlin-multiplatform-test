@@ -15,7 +15,7 @@
             android:id="@+id/activity_main_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            app:title="Kotlin Multiplatform POC"
+            app:title="@string/app_name"
             style="@style/MyToolbar"
             />
     </android.support.design.widget.AppBarLayout>
@@ -42,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Raised"
+            android:textColor="@android:color/black"
             />
 
         <Button
@@ -52,6 +53,15 @@
             android:layout_gravity="end"
             android:text="Flat"
             android:textSize="16sp"
+            android:textColor="@color/colorAccentDark"
+            />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@color/colorPrimaryDark"
+            android:src="@drawable/ic_app_logo"
+            android:layout_gravity="bottom"
             />
     </FrameLayout>
 
