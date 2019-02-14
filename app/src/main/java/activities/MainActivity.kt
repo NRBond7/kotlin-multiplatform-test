@@ -21,6 +21,7 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(activity_main_toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(false)
 
         activity_main_edittext.handleTextChanged { presenter!!.handleWeightInput(it) }
     }
