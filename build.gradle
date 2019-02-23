@@ -1,13 +1,47 @@
 buildscript {
+    ext.versions = [
+            'kotlin'               : '1.3.21',
+            'multiplatformSettings': '0.2',
+    ]
+
+    ext.deps = [
+            'kotlin'               : [
+                    'stdlib'    : [
+                            'common': "org.jetbrains.kotlin:kotlin-stdlib-common:${versions.kotlin}",
+                            'jdk'   : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+                    ],
+            ],
+            'multiplatformSettings': [
+                    'common' : "com.russhwolf:multiplatform-settings-common:0.1.1",
+                    'ios'    : "com.russhwolf:multiplatform-settings-ios:${versions.multiplatformSettings}",
+                    'android': "com.russhwolf:multiplatform-settings-android:${versions.multiplatformSettings}",
+            ]
+    ]
     repositories {
-        google()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
         jcenter()
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url 'https://dl.bintray.com/touchlabpublic/kotlin' }
+        maven { url "https://kotlin.bintray.com/kotlinx" }
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:${versions.kotlin}"
+        classpath 'com.google.gms:google-services:4.2.0'
     }
 }
-repositories {
-    google()
-    jcenter()
+
+allprojects {
+    repositories {
+        jcenter()
+        google()
+        mavenCentral()
+        maven { url 'https://dl.bintray.com/touchlabpublic/kotlin' }
+        maven { url "https://kotlin.bintray.com/kotlinx" }
+        maven { url = 'https://dl.bintray.com/russhwolf/multiplatform-settings' }
+    }
 }

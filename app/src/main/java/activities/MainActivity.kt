@@ -16,14 +16,14 @@ import sample.R
 
 class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
 
+    private lateinit var weightInputListener: TextWatcher
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(activity_main_toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(false)
-
-        activity_main_edittext.handleTextChanged { presenter!!.handleWeightInput(it) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -41,8 +41,18 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
                 else -> super.onOptionsItemSelected(item)
             }
 
-    private fun EditText.handleTextChanged(handleTextChanged: (String) -> Unit) =
-        this.addTextChangedListener(object : TextWatcher {
+    override fun onResume() {
+        super.onResume()
+        activity_main_edittext.handleTextChanged { presenter!!.handleWeightInput(it) }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        activity_main_edittext.removeTextChangedListener(weightInputListener)
+    }
+
+    private fun EditText.handleTextChanged(handleTextChanged: (String) -> Unit) {
+        weightInputListener = object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -50,7 +60,9 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
             override fun afterTextChanged(editable: Editable?) {
                 handleTextChanged.invoke(editable.toString())
             }
-        })
+        }
+        this.addTextChangedListener(weightInputListener)
+    }
 
     override fun openSettings() = startActivity(Intent(this, SettingsActivity::class.java))
 
@@ -60,5 +72,10 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
 
     override fun initPresenter() {
         presenter = MainPresenter()
+    }
+
+    override fun populateWeightField(weight: String, isMetric: Boolean) {
+        activity_main_edittext.setText(weight)
+        activity_main_edittext.hint = if (isMetric) getString(R.string.weight_input_field_hint_kg) else getString(R.string.weight_input_field_hint_lbs)
     }
 }

@@ -4,8 +4,9 @@ import base.Contract
 
 interface MainContract : Contract {
     interface View : Contract.View {
-        fun openSettings()
         fun displayWeight()
+        fun openSettings()
+        fun populateWeightField(weight: String, isMetric: Boolean)
     }
 
     interface Presenter : Contract.Presenter<Contract.View> {
