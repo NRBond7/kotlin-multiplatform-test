@@ -15,10 +15,11 @@ abstract class SettingsRepository(factory: Settings.Factory, settingsKey: String
 sealed class SettingConfig<T>(
         private val settings: Settings,
         val key: String,
-        defaultValue: T,
+        private val defaultValue: T,
         delegate: Settings.(String, T) -> ReadWriteProperty<Any?, T>,
         private val toType: String.() -> T
 ) {
+
     private var value: T by settings.delegate(key, defaultValue)
 
     fun remove() {
@@ -35,6 +36,8 @@ sealed class SettingConfig<T>(
             false
         }
     }
+
+    fun resetToDefault() = set(defaultValue.toString())
 
     override fun toString() = key
 }
