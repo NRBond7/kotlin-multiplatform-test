@@ -24,11 +24,11 @@ class GlobalSettings(factory: Settings.Factory) : SettingsRepository(factory, SE
         const val UNIT_LBS = "lbs"
         const val UNIT_KG = "kg"
 
-        val OPTIONS_WEIGHT_UNIT = listOf(UNIT_LBS, UNIT_KG)
-        val OPTIONS_BAR_WEIGHT_KG = listOf("15", DEFAULT_BAR_WEIGHT_KG.toString())
-        val OPTIONS_BAR_WEIGHT_LBS = listOf("35", DEFAULT_BAR_WEIGHT_POUNDS.toString())
-        val OPTIONS_SMALLEST_PLATE_WEIGHT_KG = listOf(DEFAULT_SMALLEST_WEIGHT_KG.toString(), "1.5", "2", "2.5")
-        val OPTIONS_SMALLEST_PLATE_WEIGHT_LBS = listOf(DEFAULT_SMALLEST_WEIGHT_POUNDS.toString(), "5")
+        private val OPTIONS_WEIGHT_UNIT = listOf(UNIT_LBS, UNIT_KG)
+        private val OPTIONS_BAR_WEIGHT_KG = listOf("15.0", DEFAULT_BAR_WEIGHT_KG.toString())
+        private val OPTIONS_BAR_WEIGHT_LBS = listOf("35.0", DEFAULT_BAR_WEIGHT_POUNDS.toString())
+        private val OPTIONS_SMALLEST_PLATE_WEIGHT_KG = listOf(DEFAULT_SMALLEST_WEIGHT_KG.toString(), "1.5", "2.0", "2.5")
+        private val OPTIONS_SMALLEST_PLATE_WEIGHT_LBS = listOf(DEFAULT_SMALLEST_WEIGHT_POUNDS.toString(), "5.0")
     }
 
     val barWeight: DoubleSettingConfig
@@ -56,6 +56,14 @@ class GlobalSettings(factory: Settings.Factory) : SettingsRepository(factory, SE
         val defaultSmallestWeight = if (metricEnabled.get()) DEFAULT_SMALLEST_WEIGHT_KG else DEFAULT_SMALLEST_WEIGHT_POUNDS
         smallestPlateWeight = DoubleSettingConfig(settings, SETTINGS_KEY_SMALLEST_WEIGHT, defaultSmallestWeight)
     }
+
+    fun getWeightUnitString() = if (metricEnabled.get()) UNIT_KG else UNIT_LBS
+
+    fun getWeightUnitOptions() = OPTIONS_WEIGHT_UNIT
+
+    fun getBarbellWeightOptions() = if (metricEnabled.get()) OPTIONS_BAR_WEIGHT_KG else OPTIONS_BAR_WEIGHT_LBS
+
+    fun getSmallestPlateOptions() = if (metricEnabled.get()) OPTIONS_SMALLEST_PLATE_WEIGHT_KG else OPTIONS_SMALLEST_PLATE_WEIGHT_LBS
 
     fun onWeightUnitUpdated(isMetric: Boolean) {
         val defaultBarLoad = if (isMetric) DEFAULT_BAR_LOAD_KG else DEFAULT_BAR_LOAD_POUNDS

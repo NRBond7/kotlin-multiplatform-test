@@ -24,9 +24,13 @@ class SettingsActivity : BaseActivity<SettingsPresenter>(), SettingsContract.Vie
         presenter = SettingsPresenter()
     }
 
-    override fun populateSettings(unit: String, barbellWeight: String, plateWeight: String, conroyModeEnabled: Boolean) {
+    override fun populateSettings(unit: String, barbellTitle: String, barbellWeight: String,
+                                  plateWeightTitle: String, plateWeight: String, conroyModeEnabled: Boolean) {
+
         activity_settings_weight_unit_value.text = unit
+        activity_settings_bar_weight_title.text = barbellTitle
         activity_settings_bar_weight_value.text = barbellWeight
+        activity_settings_smallest_plate_title.text = plateWeightTitle
         activity_settings_smallest_plate_weight_value.text = plateWeight
         activity_settings_conroy_mode_switch.isChecked = conroyModeEnabled
     }

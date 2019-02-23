@@ -7,7 +7,7 @@ interface MainContract : Contract {
         fun displayWeight()
         fun getInputWeight(): String
         fun openSettings()
-        fun populateWeightField(weight: String, isMetric: Boolean)
+        fun populateWeightField(hint: String, weight: String)
     }
 
     interface Presenter : Contract.Presenter<Contract.View> {

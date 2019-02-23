@@ -42,8 +42,10 @@ class SettingsPresenter : BasePresenter<SettingsContract.View>(), SettingsContra
 
     private fun updateUI() {
         view.populateSettings(
-                getUnitString(),
+                settings.getWeightUnitString(),
+                getBarbellTitle(),
                 settings.barWeight.get().toString(),
+                getPlateWeightTitle(),
                 settings.smallestPlateWeight.get().toString(),
                 settings.conroyModeEnabled.get()
         )
@@ -52,20 +54,22 @@ class SettingsPresenter : BasePresenter<SettingsContract.View>(), SettingsContra
     private fun handlePickerSettingClicked(pickerSetting: SettingsContract.PickerSetting) {
         val title = when (pickerSetting) {
             SettingsContract.PickerSetting.WEIGHT_UNIT -> SettingsContract.PickerSetting.WEIGHT_UNIT.title
-            SettingsContract.PickerSetting.BAR_WEIGHT -> "${SettingsContract.PickerSetting.BAR_WEIGHT.title} (${getUnitString()})"
-            SettingsContract.PickerSetting.SMALLEST_PLATE_WEIGHT -> "${SettingsContract.PickerSetting.SMALLEST_PLATE_WEIGHT.title} (${getUnitString()})"
+            SettingsContract.PickerSetting.BAR_WEIGHT -> getBarbellTitle()
+            SettingsContract.PickerSetting.SMALLEST_PLATE_WEIGHT -> getPlateWeightTitle()
         }
 
         val pickerOptions = when (pickerSetting) {
-            SettingsContract.PickerSetting.WEIGHT_UNIT -> GlobalSettings.OPTIONS_WEIGHT_UNIT
-            SettingsContract.PickerSetting.BAR_WEIGHT -> if (isMetricUnitOn()) GlobalSettings.OPTIONS_BAR_WEIGHT_KG else GlobalSettings.OPTIONS_BAR_WEIGHT_LBS
-            SettingsContract.PickerSetting.SMALLEST_PLATE_WEIGHT -> if (isMetricUnitOn()) GlobalSettings.OPTIONS_SMALLEST_PLATE_WEIGHT_KG else GlobalSettings.OPTIONS_SMALLEST_PLATE_WEIGHT_LBS
+            SettingsContract.PickerSetting.WEIGHT_UNIT -> settings.getWeightUnitOptions()
+            SettingsContract.PickerSetting.BAR_WEIGHT -> settings.getBarbellWeightOptions()
+            SettingsContract.PickerSetting.SMALLEST_PLATE_WEIGHT -> settings.getSmallestPlateOptions()
         }
 
         view.showPickerDialog(title, pickerOptions, pickerSetting)
     }
 
-    private fun getUnitString(): String = if (isMetricUnitOn()) GlobalSettings.UNIT_KG else GlobalSettings.UNIT_LBS
-
     private fun isMetricUnitOn(): Boolean = settings.metricEnabled.get()
+
+    private fun getBarbellTitle(): String = "${SettingsContract.PickerSetting.BAR_WEIGHT.title} (${settings.getWeightUnitString()})"
+
+    private fun getPlateWeightTitle(): String = "${SettingsContract.PickerSetting.SMALLEST_PLATE_WEIGHT.title} (${settings.getWeightUnitString()})"
 }

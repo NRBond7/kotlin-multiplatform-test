@@ -11,7 +11,8 @@ interface SettingsContract {
     }
 
     interface View : Contract.View {
-        fun populateSettings(unit: String, barbellWeight: String, plateWeight: String, conroyModeEnabled: Boolean)
+        fun populateSettings(unit: String, barbellTitle: String, barbellWeight: String,
+                             plateWeightTitle: String, plateWeight: String, conroyModeEnabled: Boolean)
         fun setConroyMode(conroyModeEnabled: Boolean)
         fun showPickerDialog(title: String, options: List<String>, pickerSetting: PickerSetting)
     }

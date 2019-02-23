@@ -71,10 +71,11 @@
             >
 
             <TextView
+                android:id="@+id/activity_settings_bar_weight_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/settings_field_bar_weight"
                 style="@style/BodyText"
+                tools:text="Bar weight (lbs)"
                 />
 
             <TextView
@@ -99,10 +100,11 @@
             >
 
             <TextView
+                android:id="@+id/activity_settings_smallest_plate_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/settings_field_smallest_plate"
                 style="@style/BodyText"
+                tools:text="Smallest plate weight available (lbs)"
                 />
 
             <TextView

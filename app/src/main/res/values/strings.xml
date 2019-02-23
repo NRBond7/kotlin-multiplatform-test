@@ -1,10 +1,6 @@
 <resources>
     <string name="app_name">Plate Calc</string>
     <string name="settings">Settings</string>
-    <string name="weight_input_field_hint_lbs">Weight (lbs)</string>
-    <string name="weight_input_field_hint_kg">Weight (kg)</string>
     <string name="settings_field_weight_unit">Weight unit</string>
-    <string name="settings_field_bar_weight">Barbell weight</string>
-    <string name="settings_field_smallest_plate">Smallest plate weight available</string>
     <string name="settings_field_conroy_mode">Conroy mode</string>
 </resources>

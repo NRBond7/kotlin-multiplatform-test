@@ -25,7 +25,10 @@ class MainPresenter : BasePresenter<MainContract.View>(), MainContract.Presenter
     override fun handleSettingsClicked() = view.openSettings()
 
     private fun updateUI() {
-        view.populateWeightField(settings.initialBarLoad.get().toString(), settings.metricEnabled.get())
+        view.populateWeightField(
+                "Weight (${settings.getWeightUnitString()})",
+                settings.initialBarLoad.get().toString()
+        )
     }
 
 }
