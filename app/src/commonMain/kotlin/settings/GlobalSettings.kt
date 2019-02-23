@@ -20,31 +20,31 @@ class GlobalSettings(factory: Settings.Factory) : SettingsRepository(factory, SE
         private const val DEFAULT_SMALLEST_WEIGHT_POUNDS = 2.5
     }
 
-    val barWeightSetting: DoubleSettingConfig
-    val conroyModeSetting = BooleanSettingConfig(settings, SETTINGS_KEY_CONROY_MODE)
-    val initialBarWeightSetting: DoubleSettingConfig
-    val metricSetting = BooleanSettingConfig(settings, SETTINGS_KEY_METRIC)
-    val smallestWeightSetting: DoubleSettingConfig
+    val barWeight: DoubleSettingConfig
+    val conroyModeEnabled = BooleanSettingConfig(settings, SETTINGS_KEY_CONROY_MODE)
+    val initialBarLoad: DoubleSettingConfig
+    val metricEnabled = BooleanSettingConfig(settings, SETTINGS_KEY_METRIC)
+    val smallestPlateWeight: DoubleSettingConfig
 
     override val mySettings: List<SettingConfig<*>>
         get() = listOf(
-                metricSetting,
-                conroyModeSetting,
-                smallestWeightSetting,
-                barWeightSetting,
-                initialBarWeightSetting
+                metricEnabled,
+                conroyModeEnabled,
+                smallestPlateWeight,
+                barWeight,
+                initialBarLoad
         )
 
 
     init {
-        val defaultBarLoad = if (metricSetting.get()) DEFAULT_BAR_LOAD_KG else DEFAULT_BAR_LOAD_POUNDS
-        initialBarWeightSetting = DoubleSettingConfig(settings, SETTINGS_KEY_INITIAL_BAR_LOAD, defaultBarLoad)
+        val defaultBarLoad = if (metricEnabled.get()) DEFAULT_BAR_LOAD_KG else DEFAULT_BAR_LOAD_POUNDS
+        initialBarLoad = DoubleSettingConfig(settings, SETTINGS_KEY_INITIAL_BAR_LOAD, defaultBarLoad)
 
-        val defaultBarWeight = if (metricSetting.get()) DEFAULT_BAR_WEIGHT_KG else DEFAULT_BAR_WEIGHT_POUNDS
-        barWeightSetting = DoubleSettingConfig(settings, SETTINGS_KEY_BAR_WEIGHT, defaultBarWeight)
+        val defaultBarWeight = if (metricEnabled.get()) DEFAULT_BAR_WEIGHT_KG else DEFAULT_BAR_WEIGHT_POUNDS
+        barWeight = DoubleSettingConfig(settings, SETTINGS_KEY_BAR_WEIGHT, defaultBarWeight)
 
-        val defaultSmallestWeight = if (metricSetting.get()) DEFAULT_SMALLEST_WEIGHT_KG else DEFAULT_SMALLEST_WEIGHT_POUNDS
-        smallestWeightSetting = DoubleSettingConfig(settings, SETTINGS_KEY_SMALLEST_WEIGHT, defaultSmallestWeight)
+        val defaultSmallestWeight = if (metricEnabled.get()) DEFAULT_SMALLEST_WEIGHT_KG else DEFAULT_SMALLEST_WEIGHT_POUNDS
+        smallestPlateWeight = DoubleSettingConfig(settings, SETTINGS_KEY_SMALLEST_WEIGHT, defaultSmallestWeight)
     }
 
 }

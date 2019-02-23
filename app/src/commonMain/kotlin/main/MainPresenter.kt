@@ -15,12 +15,17 @@ class MainPresenter : BasePresenter<MainContract.View>(), MainContract.Presenter
         updateUI()
     }
 
+    override fun dropView() {
+        settings.initialBarLoad.set(view.getInputWeight())
+        super.dropView()
+    }
+
     override fun handleWeightInput(weight: String) = view.displayWeight()
 
     override fun handleSettingsClicked() = view.openSettings()
 
     private fun updateUI() {
-        view.populateWeightField(settings.initialBarWeightSetting.get().toString(), settings.metricSetting.get())
+        view.populateWeightField(settings.initialBarLoad.get().toString(), settings.metricEnabled.get())
     }
 
 }

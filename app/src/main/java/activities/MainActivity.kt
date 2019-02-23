@@ -74,6 +74,8 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
         presenter = MainPresenter()
     }
 
+    override fun getInputWeight(): String = activity_main_edittext.text.toString()
+
     override fun populateWeightField(weight: String, isMetric: Boolean) {
         activity_main_edittext.setText(weight)
         activity_main_edittext.hint = if (isMetric) getString(R.string.weight_input_field_hint_kg) else getString(R.string.weight_input_field_hint_lbs)

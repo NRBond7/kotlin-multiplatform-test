@@ -5,6 +5,7 @@ import base.Contract
 interface MainContract : Contract {
     interface View : Contract.View {
         fun displayWeight()
+        fun getInputWeight(): String
         fun openSettings()
         fun populateWeightField(weight: String, isMetric: Boolean)
     }
