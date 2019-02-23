@@ -23,16 +23,124 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/first_keyline"
+        android:layout_marginTop="@dimen/first_keyline"
+        android:layout_marginBottom="@dimen/first_keyline"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings"
-            />
+        <LinearLayout
+            android:id="@+id/activity_settings_metric_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/setting_height"
+            android:paddingStart="@dimen/first_keyline"
+            android:paddingEnd="@dimen/first_keyline"
+            android:background="?selectableItemBackground"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_field_weight_unit"
+                android:layout_gravity="start|center_vertical"
+                style="@style/BodyText"
+                />
+
+            <TextView
+                android:id="@+id/activity_settings_weight_unit_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                style="@style/SubheaderText"
+                tools:text="lbs"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activity_settings_bar_weight_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/setting_height"
+            android:paddingStart="@dimen/first_keyline"
+            android:paddingEnd="@dimen/first_keyline"
+            android:background="?selectableItemBackground"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_field_bar_weight"
+                style="@style/BodyText"
+                />
+
+            <TextView
+                android:id="@+id/activity_settings_bar_weight_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/SubheaderText"
+                tools:text="45 lbs"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activity_settings_smallest_plate_weight_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/setting_height"
+            android:paddingStart="@dimen/first_keyline"
+            android:paddingEnd="@dimen/first_keyline"
+            android:background="?selectableItemBackground"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_field_smallest_plate"
+                style="@style/BodyText"
+                />
+
+            <TextView
+                android:id="@+id/activity_settings_smallest_plate_weight_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/SubheaderText"
+                tools:text="2.5 lbs"
+                />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/activity_settings_conroy_mode_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/setting_height"
+            android:paddingStart="@dimen/first_keyline"
+            android:paddingEnd="@dimen/first_keyline"
+            android:background="?selectableItemBackground"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_field_conroy_mode"
+                android:layout_gravity="start|center_vertical"
+                style="@style/BodyText"
+                />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/activity_settings_conroy_mode_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                tools:checked="true"
+                />
+
+        </FrameLayout>
 
     </LinearLayout>
 
