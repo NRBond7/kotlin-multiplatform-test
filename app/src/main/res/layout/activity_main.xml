@@ -41,7 +41,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:hint="@string/weight_input_field_hint_lbs"
                 android:importantForAutofill="no"
                 style="@style/EditText"
                 tools:text="225"
