@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Color tool -->
-    <!-- https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=F28722&secondary.color=42A5F5  -->
-    <color name="colorPrimary">#F28722</color> <!-- Black text -->
-    <color name="colorPrimaryDark">#b95900</color> <!-- White text -->
-    <color name="colorPrimaryLight">#ffb854</color> <!-- Black text -->
-    <color name="colorAccent">#42a5f5</color> <!-- Black text, black icons -->
-    <color name="colorAccentDark">#0077c2</color> <!-- Black text -->
-    <color name="colorAccentLight">#80d6ff</color> <!-- white text -->
+    <!-- https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=D32F2F&secondary.color=1A237E  -->
+    <color name="colorPrimary">#d32f2f</color> <!-- White text -->
+    <color name="colorPrimaryDark">#9a0007</color> <!-- White text -->
+    <color name="colorPrimaryLight">#ff6659</color> <!-- White text -->
+    <color name="colorAccent">#1a237e</color> <!-- Black text, black icons -->
+    <color name="colorAccentDark">#000051</color> <!-- White text -->
+    <color name="colorAccentLight">#534bae</color> <!-- white text -->
     <color name="error">#B00020</color>
 
     <color name="text_black">#29292B</color>

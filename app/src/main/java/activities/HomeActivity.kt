@@ -8,19 +8,19 @@ import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
-import kotlinx.android.synthetic.main.activity_main.*
-import main.MainContract
-import main.MainPresenter
+import kotlinx.android.synthetic.main.activity_home.*
+import home.HomeContract
+import home.HomePresenter
 import sample.R
 
 
-class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
+class HomeActivity : BaseActivity<HomeContract.Presenter>(), HomeContract.View {
 
     private lateinit var weightInputListener: TextWatcher
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_home)
 
         setSupportActionBar(activity_main_toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(false)
@@ -71,7 +71,7 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
     }
 
     override fun initPresenter() {
-        presenter = MainPresenter()
+        presenter = HomePresenter()
     }
 
     override fun getInputWeight(): String = activity_main_edittext.text.toString()

@@ -1,12 +1,12 @@
 import UIKit
-import app
+import main
 import MaterialComponents
 
-class ViewController: UIViewController, MainContractView {
+class ViewController: UIViewController, HomeContractView {
     
     @IBOutlet weak var weightField: MDCTextField!
     
-    let presenter = MainPresenter()
+    let presenter = HomePresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,5 +29,17 @@ class ViewController: UIViewController, MainContractView {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         presenter.handleWeightInput(weight: textField.text!)
+    }
+    
+    func getSettingsFactory() -> Multiplatform_settingsSettingsFactory {
+        return PlatformFunctionsKt.generateSettingsFactory()
+    }
+    
+    func getInputWeight() -> String {
+        return ""
+    }
+    
+    func populateWeightField(hint: String, weight: String) {
+        
     }
 }

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6DB0F52F220B799B005F6374 /* app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB0F526220B76B0005F6374 /* app.framework */; };
-		6DB0F530220B799B005F6374 /* app.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB0F526220B76B0005F6374 /* app.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6D9F8F9422223A760044B4C3 /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9F8F9322223A760044B4C3 /* main.framework */; };
+		6D9F8F9522223A760044B4C3 /* main.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9F8F9322223A760044B4C3 /* main.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6DB11711221B6D89006F1B4F /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CFE1903066BC5AF3B4037B /* Pods_iosApp.framework */; };
 		6DFC8EBB221B605D00030C6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DFC8EBA221B58F400030C6D /* Assets.xcassets */; };
 		6DFC8EBD221B61D200030C6D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 6DFC8EBC221B61D200030C6D /* Podfile */; };
@@ -30,13 +30,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		6DB0F531220B799C005F6374 /* Embed Frameworks */ = {
+		6D9F8F9622223A760044B4C3 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6DB0F530220B799B005F6374 /* app.framework in Embed Frameworks */,
+				6D9F8F9522223A760044B4C3 /* main.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -47,6 +47,8 @@
 		08CFE1903066BC5AF3B4037B /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43FB6CFA0C5BA641D673B3CC /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		6D7BDB50221B67C2001D8F9D /* MaterialComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MaterialComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D9F8F9222223A2D0044B4C3 /* xcode-frameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "xcode-frameworks"; path = "../app/build/xcode-frameworks"; sourceTree = "<group>"; };
+		6D9F8F9322223A760044B4C3 /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "../app/build/xcode-frameworks/main.framework"; sourceTree = "<group>"; };
 		6DB0F526220B76B0005F6374 /* app.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = app.framework; path = "../app/build/xcode-frameworks/app.framework"; sourceTree = "<group>"; };
 		6DB0F528220B7785005F6374 /* project.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; name = project.xcworkspace; path = iosApp.xcodeproj/project.xcworkspace; sourceTree = "<group>"; };
 		6DFC8EBA221B58F400030C6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,7 +80,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DB11711221B6D89006F1B4F /* Pods_iosApp.framework in Frameworks */,
-				6DB0F52F220B799B005F6374 /* app.framework in Frameworks */,
+				6D9F8F9422223A760044B4C3 /* main.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +117,8 @@
 		F861D7D4207FA40F0085E80D = {
 			isa = PBXGroup;
 			children = (
+				6D9F8F9322223A760044B4C3 /* main.framework */,
+				6D9F8F9222223A2D0044B4C3 /* xcode-frameworks */,
 				6DFC8EBC221B61D200030C6D /* Podfile */,
 				F861D813207FA4520085E80D /* app */,
 				F861D7DF207FA40F0085E80D /* iosApp */,
@@ -169,8 +173,8 @@
 				F861D7D9207FA40F0085E80D /* Sources */,
 				F861D7DA207FA40F0085E80D /* Frameworks */,
 				F861D7DB207FA40F0085E80D /* Resources */,
-				6DB0F531220B799C005F6374 /* Embed Frameworks */,
 				91E8FE1FE60DBB7C2E1D352E /* [CP] Embed Pods Frameworks */,
+				6D9F8F9622223A760044B4C3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -289,7 +293,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$SRCROOT/../app/build/xcode-frameworks\"\n./gradlew :app:packForXCode\n";
+			shellScript = "cd \"$SRCROOT/../app/build/xcode-frameworks/\"\n./gradlew :app:packForXCode\n";
 		};
 		91E8FE1FE60DBB7C2E1D352E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -514,8 +518,8 @@
 				DEVELOPMENT_TEAM = 4LQZ3M53PR;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../app/build/xcode-frameworks",
+					"$(inherited)/**",
+					"$(SRCROOT)/../app/build/xcode-frameworks/**",
 				);
 				INFOPLIST_FILE = iosApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
@@ -542,8 +546,8 @@
 				DEVELOPMENT_TEAM = 4LQZ3M53PR;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../app/build/xcode-frameworks",
+					"$(inherited)/**",
+					"$(SRCROOT)/../app/build/xcode-frameworks/**",
 				);
 				INFOPLIST_FILE = iosApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;

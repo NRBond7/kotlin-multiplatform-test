@@ -1,11 +1,11 @@
-package main
+package home
 
 import base.BasePresenter
 import base.Contract
 import settings.GlobalSettings
 
 
-class MainPresenter : BasePresenter<MainContract.View>(), MainContract.Presenter  {
+class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter  {
 
     lateinit var settings: GlobalSettings
 

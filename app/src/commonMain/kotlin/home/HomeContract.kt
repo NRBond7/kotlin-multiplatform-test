@@ -1,8 +1,8 @@
-package main
+package home
 
 import base.Contract
 
-interface MainContract : Contract {
+interface HomeContract : Contract {
     interface View : Contract.View {
         fun displayWeight()
         fun getInputWeight(): String
