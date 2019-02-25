@@ -40,14 +40,21 @@
                 android:id="@+id/activity_main_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:importantForAutofill="no"
+                android:maxLength="6"
                 style="@style/EditText"
                 tools:text="225"
                 />
 
         </android.support.design.widget.TextInputLayout>
 
+        <TextView
+            android:id="@+id/text_weights"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/BodyText"
+            />
 
     </LinearLayout>
 

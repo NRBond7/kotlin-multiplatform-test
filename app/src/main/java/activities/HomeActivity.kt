@@ -2,21 +2,19 @@ package activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
-import kotlinx.android.synthetic.main.activity_home.*
 import home.HomeContract
 import home.HomePresenter
+import kotlinx.android.synthetic.main.activity_home.*
+import lib.Plate
 import sample.R
 
 
 class HomeActivity : BaseActivity<HomeContract.Presenter>(), HomeContract.View {
-
-    private lateinit var weightInputListener: TextWatcher
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +22,7 @@ class HomeActivity : BaseActivity<HomeContract.Presenter>(), HomeContract.View {
 
         setSupportActionBar(activity_main_toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+        activity_main_edittext.handleTextChanged { presenter!!.onWeightInput(it) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -41,18 +40,8 @@ class HomeActivity : BaseActivity<HomeContract.Presenter>(), HomeContract.View {
                 else -> super.onOptionsItemSelected(item)
             }
 
-    override fun onResume() {
-        super.onResume()
-        activity_main_edittext.handleTextChanged { presenter!!.handleWeightInput(it) }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        activity_main_edittext.removeTextChangedListener(weightInputListener)
-    }
-
     private fun EditText.handleTextChanged(handleTextChanged: (String) -> Unit) {
-        weightInputListener = object : TextWatcher {
+        this.addTextChangedListener( object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -60,14 +49,13 @@ class HomeActivity : BaseActivity<HomeContract.Presenter>(), HomeContract.View {
             override fun afterTextChanged(editable: Editable?) {
                 handleTextChanged.invoke(editable.toString())
             }
-        }
-        this.addTextChangedListener(weightInputListener)
+        })
     }
 
     override fun openSettings() = startActivity(Intent(this, SettingsActivity::class.java))
 
-    override fun displayWeight() {
-        Snackbar.make(activity_main_edittext, "generate weight", Snackbar.LENGTH_LONG).show()
+    override fun displayWeight(plates: List<Plate>) {
+        text_weights.text = plates.toString()
     }
 
     override fun initPresenter() {
