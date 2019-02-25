@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="activities.HomeActivity"/>
+        <activity android:name="home.HomeActivity"/>
         <activity android:name="activities.SettingsActivity"/>
     </application>
 
