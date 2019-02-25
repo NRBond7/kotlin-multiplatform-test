@@ -27,7 +27,8 @@ class PlateAdapter(private val plates: List<Plate>) : RecyclerView.Adapter<ViewH
 class ViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bindView(plate: Plate) {
-        val layoutParams = FrameLayout.LayoutParams(WRAP_CONTENT, plate.height)
+        val height = plate.height * itemView.context.resources.displayMetrics.density
+        val layoutParams = FrameLayout.LayoutParams(WRAP_CONTENT, height.toInt())
         layoutParams.gravity = Gravity.CENTER_VERTICAL
         itemView.item_plate_color.layoutParams = layoutParams
         itemView.item_plate_color.setBackgroundColor(Color.parseColor(plate.color))
