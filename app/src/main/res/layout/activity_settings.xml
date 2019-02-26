@@ -126,13 +126,27 @@
             android:background="?selectableItemBackground"
             >
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/settings_field_conroy_mode"
-                android:layout_gravity="start|center_vertical"
-                style="@style/BodyText"
-                />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_field_conroy_mode"
+                    android:layout_gravity="start|center_vertical"
+                    style="@style/BodyText"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_field_conroy_mode_desc"
+                    style="@style/SubheaderText"
+                    />
+            </LinearLayout>
 
             <android.support.v7.widget.SwitchCompat
                 android:id="@+id/activity_settings_conroy_mode_switch"
