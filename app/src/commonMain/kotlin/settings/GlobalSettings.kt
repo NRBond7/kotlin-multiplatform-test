@@ -18,8 +18,8 @@ class GlobalSettings(factory: Settings.Factory) : SettingsRepository(factory, SE
         private const val DEFAULT_BAR_LOAD_POUNDS = 225.0
         private const val DEFAULT_BAR_WEIGHT_KG = 20.0
         private const val DEFAULT_BAR_WEIGHT_POUNDS = 45.0
-        private const val DEFAULT_SMALLEST_WEIGHT_KG = 1.0
-        private const val DEFAULT_SMALLEST_WEIGHT_POUNDS = 2.5
+        private val DEFAULT_SMALLEST_WEIGHT_KG = Plate.getAvailablePlates(true).last().weight // 1.0
+        private val DEFAULT_SMALLEST_WEIGHT_POUNDS = Plate.getAvailablePlates(false).last().weight // 2.5
 
         const val UNIT_LBS = "lbs"
         const val UNIT_KG = "kg"
@@ -27,9 +27,8 @@ class GlobalSettings(factory: Settings.Factory) : SettingsRepository(factory, SE
         private val OPTIONS_WEIGHT_UNIT = listOf(UNIT_LBS, UNIT_KG)
         private val OPTIONS_BAR_WEIGHT_KG = listOf("15.0", DEFAULT_BAR_WEIGHT_KG.toString())
         private val OPTIONS_BAR_WEIGHT_LBS = listOf("35.0", DEFAULT_BAR_WEIGHT_POUNDS.toString())
-        private val OPTIONS_SMALLEST_PLATE_WEIGHT_KG = listOf(DEFAULT_SMALLEST_WEIGHT_KG.toString(), "1.25", "2.0", "2.5")
-        private val OPTIONS_SMALLEST_PLATE_WEIGHT_LBS = listOf(DEFAULT_SMALLEST_WEIGHT_POUNDS.toString(), "5.0")
-    }
+        private val OPTIONS_SMALLEST_PLATE_WEIGHT_KG = Plate.getAvailablePlates(true).filter { it.weight <= 5.0 }.map { it.weight.toString() }
+        private val OPTIONS_SMALLEST_PLATE_WEIGHT_LBS = Plate.getAvailablePlates(false).filter { it.weight <= 5.0 }.map { it.weight.toString() } }
 
     val barWeight: DoubleSettingConfig
     val conroyModeEnabled = BooleanSettingConfig(settings, SETTINGS_KEY_CONROY_MODE)
