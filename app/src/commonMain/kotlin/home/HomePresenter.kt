@@ -4,8 +4,6 @@ import base.BasePresenter
 import base.Contract
 import lib.Plate
 import settings.GlobalSettings
-import kotlin.math.floor
-import kotlin.random.Random
 
 
 class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter  {
@@ -40,12 +38,12 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
         )
     }
 
-    private fun generateOneEndOfBarWeight(inputWeight: Double, barWeight: Double) : Double {
+    fun generateOneEndOfBarWeight(inputWeight: Double, barWeight: Double) : Double {
         val weight = (inputWeight - barWeight) / 2.0
         return if (weight > 0.0) weight else 0.0
     }
 
-    private fun generatePlateSet(weightInput: Double, availablePlates: List<Plate>, plateRandomizationOn: Boolean): List<Plate> {
+    fun generatePlateSet(weightInput: Double, availablePlates: List<Plate>, plateRandomizationOn: Boolean): List<Plate> {
         val plateList = arrayListOf<Plate>()
         var remainingWeight = weightInput
 
@@ -55,12 +53,11 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
                 if (randomPlate.weight <= remainingWeight) {
                     plateList.add(randomPlate)
                     remainingWeight -= randomPlate.weight
-                    println("Weight: $remainingWeight")
                 }
             }
         } else {
             availablePlates.forEach {
-                val numPlates = floor(remainingWeight / it.weight).toInt()
+                val numPlates = (remainingWeight / it.weight).toInt()
                 for (x in 1..numPlates) { plateList.add(it) }
                 remainingWeight -= (it.weight * numPlates)
             }
@@ -69,7 +66,7 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
         return plateList
     }
 
-    private fun createAvailablePlates(isMetric: Boolean, smallestPlateWeight: Double): List<Plate> =
+    fun createAvailablePlates(isMetric: Boolean, smallestPlateWeight: Double): List<Plate> =
             Plate.getAvailablePlates(isMetric).filter { it.weight >= smallestPlateWeight }
 
 }

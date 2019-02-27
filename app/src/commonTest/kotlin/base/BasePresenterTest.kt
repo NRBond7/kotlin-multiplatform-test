@@ -1,10 +1,10 @@
 package base
 
-import kotlin.test.Test
+import kotlin.test.*
 
 abstract class BasePresenterTest {
 
-    @Test
+    @BeforeTest
     fun setup() {
 
     }

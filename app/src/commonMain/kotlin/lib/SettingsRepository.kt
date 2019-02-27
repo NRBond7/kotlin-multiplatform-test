@@ -14,7 +14,7 @@ abstract class SettingsRepository(factory: Settings.Factory, settingsKey: String
 
 sealed class SettingConfig<T>(
         private val settings: Settings,
-        val key: String,
+        private val key: String,
         private val defaultValue: T,
         delegate: Settings.(String, T) -> ReadWriteProperty<Any?, T>,
         private val toType: String.() -> T
