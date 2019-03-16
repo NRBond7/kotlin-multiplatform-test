@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6D3DEE01223D73E8007313E3 /* BarbellPlatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3DEE00223D73E8007313E3 /* BarbellPlatesView.swift */; };
 		6D3DEE03223D760A007313E3 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3DEE02223D760A007313E3 /* Util.swift */; };
+		6D3DEE05223D92F3007313E3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3DEE04223D92F3007313E3 /* SettingsViewController.swift */; };
+		6D3DEE07223D93CF007313E3 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D3DEE06223D93CF007313E3 /* Settings.storyboard */; };
 		6D9F8F9422223A760044B4C3 /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9F8F9322223A760044B4C3 /* main.framework */; };
 		6D9F8F9522223A760044B4C3 /* main.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9F8F9322223A760044B4C3 /* main.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6DA743662227304F005A439B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA743652227304F005A439B /* BaseViewController.swift */; };
@@ -51,6 +53,8 @@
 		43FB6CFA0C5BA641D673B3CC /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		6D3DEE00223D73E8007313E3 /* BarbellPlatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarbellPlatesView.swift; sourceTree = "<group>"; };
 		6D3DEE02223D760A007313E3 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		6D3DEE04223D92F3007313E3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6D3DEE06223D93CF007313E3 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		6D7BDB50221B67C2001D8F9D /* MaterialComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MaterialComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D9F8F9222223A2D0044B4C3 /* xcode-frameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "xcode-frameworks"; path = "../app/build/xcode-frameworks"; sourceTree = "<group>"; };
 		6D9F8F9322223A760044B4C3 /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "../app/build/xcode-frameworks/main.framework"; sourceTree = "<group>"; };
@@ -148,15 +152,17 @@
 		F861D7DF207FA40F0085E80D /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
-				6DFC8EBA221B58F400030C6D /* Assets.xcassets */,
 				F861D7E0207FA40F0085E80D /* AppDelegate.swift */,
-				F861D7E2207FA40F0085E80D /* HomeViewController.swift */,
-				6D3DEE02223D760A007313E3 /* Util.swift */,
-				F861D7E4207FA40F0085E80D /* Home.storyboard */,
-				F861D7E9207FA4100085E80D /* LaunchScreen.storyboard */,
-				F861D7EC207FA4100085E80D /* Info.plist */,
-				6DA743652227304F005A439B /* BaseViewController.swift */,
+				6DFC8EBA221B58F400030C6D /* Assets.xcassets */,
 				6D3DEE00223D73E8007313E3 /* BarbellPlatesView.swift */,
+				6DA743652227304F005A439B /* BaseViewController.swift */,
+				F861D7E4207FA40F0085E80D /* Home.storyboard */,
+				F861D7E2207FA40F0085E80D /* HomeViewController.swift */,
+				F861D7EC207FA4100085E80D /* Info.plist */,
+				F861D7E9207FA4100085E80D /* LaunchScreen.storyboard */,
+				6D3DEE06223D93CF007313E3 /* Settings.storyboard */,
+				6D3DEE04223D92F3007313E3 /* SettingsViewController.swift */,
+				6D3DEE02223D760A007313E3 /* Util.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -277,6 +283,7 @@
 				6DFC8EBB221B605D00030C6D /* Assets.xcassets in Resources */,
 				6DFC8EBD221B61D200030C6D /* Podfile in Resources */,
 				F861D7E6207FA40F0085E80D /* Home.storyboard in Resources */,
+				6D3DEE07223D93CF007313E3 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +369,7 @@
 				6D3DEE03223D760A007313E3 /* Util.swift in Sources */,
 				6D3DEE01223D73E8007313E3 /* BarbellPlatesView.swift in Sources */,
 				6DA743662227304F005A439B /* BaseViewController.swift in Sources */,
+				6D3DEE05223D92F3007313E3 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

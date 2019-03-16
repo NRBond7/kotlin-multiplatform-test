@@ -12,6 +12,7 @@ class HomeViewController: BaseViewController<HomeContractPresenter>, HomeContrac
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         weightField.addTarget(self, action: #selector(HomeViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged
         )
         weightField.delegate = self
@@ -44,7 +45,8 @@ class HomeViewController: BaseViewController<HomeContractPresenter>, HomeContrac
     }
     
     func openSettings() {
-        print("open settings")
+        let viewController:UIViewController = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "Settings") as! SettingsViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func populateWeightField(hint: String, weight: String) {
