@@ -40,6 +40,27 @@ class BarbellPlatesView: UIView {
             
             plateColor.setStroke()
             platePath.stroke()
+            
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            
+            let attributes: [NSAttributedString.Key : Any] = [
+                .paragraphStyle: paragraphStyle,
+                .font: UIFont.systemFont(ofSize: 14.0),
+                .foregroundColor: UIColor.black
+            ]
+            
+            let plateText: String
+            if Double(Int(plate.weight)) == plate.weight {
+                plateText = String(Int(plate.weight))
+            } else {
+                plateText = String(plate.weight)
+            }
+            let attributedString = NSAttributedString(string: plateText, attributes: attributes)
+            
+            let stringRect = CGRect(x: plateX, y: bounds.height - 40, width: BarbellPlatesView.plateWidth, height: 40)
+            attributedString.draw(in: stringRect)
+            
             index += 1
         }
     }

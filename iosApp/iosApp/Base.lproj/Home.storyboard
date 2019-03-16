@@ -53,10 +53,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n0X-vR-h6g" userLabel="Barbel container">
-                                <rect key="frame" x="16" y="149" width="343" height="200"/>
+                                <rect key="frame" x="16" y="149" width="343" height="300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owb-u1-zi0" userLabel="Bar">
-                                        <rect key="frame" x="0.0" y="91" width="80" height="20"/>
+                                        <rect key="frame" x="0.0" y="141" width="80" height="20"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="ddk-5d-5DF"/>
@@ -64,7 +64,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Avb-0j-kCg" userLabel="Plates" customClass="BarbellPlatesView" customModule="iosApp" customModuleProvider="target">
-                                        <rect key="frame" x="80" y="0.0" width="263" height="200"/>
+                                        <rect key="frame" x="80" y="0.0" width="263" height="300"/>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -73,7 +73,7 @@
                                     <constraint firstItem="Avb-0j-kCg" firstAttribute="leading" secondItem="owb-u1-zi0" secondAttribute="trailing" id="Rvh-Zq-fdO"/>
                                     <constraint firstItem="owb-u1-zi0" firstAttribute="centerY" secondItem="n0X-vR-h6g" secondAttribute="centerY" constant="1" id="SUN-a3-8ve"/>
                                     <constraint firstAttribute="bottom" secondItem="Avb-0j-kCg" secondAttribute="bottom" id="gLz-Ex-ZFf"/>
-                                    <constraint firstAttribute="height" constant="200" id="xc8-FF-jIM"/>
+                                    <constraint firstAttribute="height" constant="300" id="xc8-FF-jIM"/>
                                     <constraint firstItem="Avb-0j-kCg" firstAttribute="top" secondItem="n0X-vR-h6g" secondAttribute="top" id="ze7-Fj-RtZ"/>
                                 </constraints>
                             </view>
