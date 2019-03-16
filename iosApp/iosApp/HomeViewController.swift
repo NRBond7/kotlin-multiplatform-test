@@ -2,7 +2,9 @@ import UIKit
 import main
 import MaterialComponents
 
-class HomeViewController: BaseViewController<HomeContractPresenter>, HomeContractView {
+class HomeViewController: BaseViewController<HomeContractPresenter>, HomeContractView, UITextFieldDelegate {
+    
+    private static let characterLimit = 5
     
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var weightField: MDCTextField!
@@ -12,6 +14,7 @@ class HomeViewController: BaseViewController<HomeContractPresenter>, HomeContrac
         super.viewDidLoad()
         weightField.addTarget(self, action: #selector(HomeViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged
         )
+        weightField.delegate = self
         
         let toolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         toolbar.barStyle = .default
@@ -55,5 +58,14 @@ class HomeViewController: BaseViewController<HomeContractPresenter>, HomeContrac
     
     @objc func doneWithNumberPad() {
         weightField.resignFirstResponder()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        return updatedText.count <= HomeViewController.characterLimit
     }
 }
