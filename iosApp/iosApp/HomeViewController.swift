@@ -6,11 +6,12 @@ class HomeViewController: BaseViewController<HomeContractPresenter>, HomeContrac
     
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var weightField: MDCTextField!
-    @IBOutlet weak var plateDebugText: UITextView!
+    @IBOutlet weak var plateView: BarbellPlatesView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        weightField.addTarget(self, action: #selector(HomeViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        weightField.addTarget(self, action: #selector(HomeViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged
+        )
         presenter?.onWeightInput(weight: getInputWeight())
     }
     
@@ -40,8 +41,6 @@ class HomeViewController: BaseViewController<HomeContractPresenter>, HomeContrac
     }
     
     func displayWeight(plates: [Plate]) {
-        print("DisplayWeight")
-        print(plates)
-        plateDebugText.text = plates.description
+        plateView.updatePlates(plates: plates)
     }
 }
