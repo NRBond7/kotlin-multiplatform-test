@@ -14,6 +14,9 @@ class BaseViewController<T : ContractPresenter> : UIViewController, ContractView
     override func viewDidLoad() {
         super.viewDidLoad()
         initPresenter()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         presenter!.attachView(view: self)
     }
     

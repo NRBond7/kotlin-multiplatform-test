@@ -27,8 +27,8 @@ class GlobalSettings(factory: Settings.Factory) : SettingsRepository(factory, SE
         private val OPTIONS_WEIGHT_UNIT = listOf(UNIT_LBS, UNIT_KG)
         private val OPTIONS_BAR_WEIGHT_KG = listOf("15.0", DEFAULT_BAR_WEIGHT_KG.toString())
         private val OPTIONS_BAR_WEIGHT_LBS = listOf("35.0", DEFAULT_BAR_WEIGHT_POUNDS.toString())
-        private val OPTIONS_SMALLEST_PLATE_WEIGHT_KG = Plate.getAvailablePlates(true).filter { it.weight <= 5.0 }.map { it.weight.toString() }
-        private val OPTIONS_SMALLEST_PLATE_WEIGHT_LBS = Plate.getAvailablePlates(false).filter { it.weight <= 5.0 }.map { it.weight.toString() } }
+        private val OPTIONS_SMALLEST_PLATE_WEIGHT_KG = Plate.getAvailablePlates(true).filter { it.weight <= 5.0 }.sortedBy { it.weight }.map { it.weight.toString() }
+        private val OPTIONS_SMALLEST_PLATE_WEIGHT_LBS = Plate.getAvailablePlates(false).filter { it.weight <= 5.0 }.sortedBy { it.weight }.map { it.weight.toString() } }
 
     val barWeight: DoubleSettingConfig
     val conroyModeEnabled = BooleanSettingConfig(settings, SETTINGS_KEY_CONROY_MODE)

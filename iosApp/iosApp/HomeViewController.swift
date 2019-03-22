@@ -10,8 +10,8 @@ class HomeViewController: BaseViewController<HomeContractPresenter>, HomeContrac
     @IBOutlet weak var weightField: MDCTextField!
     @IBOutlet weak var plateView: BarbellPlatesView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         weightField.addTarget(self, action: #selector(HomeViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged
         )
