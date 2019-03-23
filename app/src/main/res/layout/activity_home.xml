@@ -42,7 +42,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:importantForAutofill="no"
-                android:maxLength="6"
+                android:maxLength="5"
+                android:imeOptions="actionDone"
                 style="@style/EditText"
                 tools:text="225"
                 />
