@@ -11,7 +11,7 @@ apply plugin: 'kotlin-multiplatform'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "org.jetbrains.kotlin.mpp_app_android"
+        applicationId "com.noahbond.platecalc"
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
