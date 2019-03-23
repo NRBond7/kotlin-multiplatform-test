@@ -33,7 +33,7 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
 
     private fun updateUI() {
         view.populateWeightField(
-                "Weight (${settings.getWeightUnitString()})",
+                "Total barbell weight (${settings.getWeightUnitString()})",
                 settings.initialBarLoad.get().toString()
         )
     }
