@@ -7,6 +7,7 @@ repositories {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-multiplatform'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 28
@@ -35,6 +36,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     implementation "org.jetbrains.anko:anko-commons:${versions.anko}"
     implementation "org.jetbrains.anko:anko-design:${versions.anko}"
+    implementation 'com.google.firebase:firebase-core:16.0.8'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
 }
 
 kotlin {
@@ -107,3 +110,4 @@ task packForXCode(type: Sync) {
 }
 
 tasks.build.dependsOn packForXCode
+apply plugin: 'com.google.gms.google-services'
