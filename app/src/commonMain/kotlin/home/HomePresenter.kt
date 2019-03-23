@@ -21,15 +21,23 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
         super.dropView()
     }
 
+    override fun screenName(): String = "Plate calculator"
+
     override fun onWeightInput(weight: String) {
         val inputWeight = if (weight.isNotEmpty()) weight.toDouble() else 0.0
         val availablePlates = createAvailablePlates(settings.metricEnabled.get(), settings.smallestPlateWeight.get())
         val endWeight = generateOneEndOfBarWeight(inputWeight, settings.barWeight.get())
 
+        val eventParams = HashMap<String, String>()
+        eventParams["input_weight"] = endWeight.toString()
+        view.logEvent("calculate_weight", eventParams)
         view.displayWeight(generatePlateSet(endWeight, availablePlates, settings.conroyModeEnabled.get()))
     }
 
-    override fun handleSettingsClicked() = view.openSettings()
+    override fun handleSettingsClicked() {
+        view.logEvent("settings_clicked", HashMap())
+        view.openSettings()
+    }
 
     private fun updateUI() {
         view.populateWeightField(

@@ -69,5 +69,6 @@ class HomeActivity : BaseActivity<HomeContract.Presenter>(), HomeContract.View {
     override fun populateWeightField(hint: String, weight: String) {
         activity_home_text_input_layout.hint = hint
         activity_home_edittext.setText(weight)
+        activity_home_edittext.setSelection(activity_home_edittext.length())
     }
 }

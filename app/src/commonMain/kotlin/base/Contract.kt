@@ -8,6 +8,8 @@ interface Contract {
         // fun displayErrorState()
         // fun displayLoadingState()
         fun getSettingsFactory(): Settings.Factory
+        fun logScreenLoad(screenName: String)
+        fun logEvent(eventName: String, params: Map<String, String>)
     }
 
     interface Presenter<V : Contract.View> {

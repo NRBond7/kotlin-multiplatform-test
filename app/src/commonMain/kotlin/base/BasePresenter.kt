@@ -10,7 +10,9 @@ abstract class BasePresenter<V : Contract.View> : Contract.Presenter<Contract.Vi
         onViewTaken()
     }
 
-    private fun onViewTaken() {}
+    private fun onViewTaken() {
+        view.logScreenLoad(screenName())
+    }
 
     // onStop
     override fun dropView() {
@@ -18,5 +20,7 @@ abstract class BasePresenter<V : Contract.View> : Contract.Presenter<Contract.Vi
     }
 
     private fun onViewDropped() {}
+
+    abstract fun screenName(): String
 
 }

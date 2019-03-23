@@ -13,13 +13,20 @@ class SettingsPresenter : BasePresenter<SettingsContract.View>(), SettingsContra
         updateUI()
     }
 
+    override fun screenName(): String = "Settings"
+
     override fun onBarbellWeightClicked() = handlePickerSettingClicked(SettingsContract.PickerSetting.BAR_WEIGHT)
 
     override fun onConroyModeClicked() {
-        val enableOrDisable = settings.conroyModeEnabled.get().not()
-        settings.conroyModeEnabled.set(enableOrDisable.toString())
-        view.setConroyMode(enableOrDisable)
+        val currentValue = settings.conroyModeEnabled.get()
+        val newValue = currentValue.not()
+        settings.conroyModeEnabled.set(newValue.toString())
+        view.setConroyMode(newValue)
+        logSettingClicked("Conroy mode")
+        logSettingChanged("Conroy mode", getBooleanText(currentValue), getBooleanText(newValue))
     }
+
+    private fun getBooleanText(on: Boolean) : String = if (on) "on" else "off"
 
     override fun onMetricSettingClicked() = handlePickerSettingClicked(SettingsContract.PickerSetting.WEIGHT_UNIT)
 
@@ -36,6 +43,13 @@ class SettingsPresenter : BasePresenter<SettingsContract.View>(), SettingsContra
             SettingsContract.PickerSetting.SMALLEST_PLATE_WEIGHT -> settings.smallestPlateWeight.set(value)
         }
         updateUI()
+
+        val oldValue = when (pickerSetting) {
+            SettingsContract.PickerSetting.WEIGHT_UNIT -> settings.getWeightUnitString()
+            SettingsContract.PickerSetting.BAR_WEIGHT -> settings.barWeight.get().toString()
+            SettingsContract.PickerSetting.SMALLEST_PLATE_WEIGHT -> settings.smallestPlateWeight.get().toString()
+        }
+        logSettingChanged(pickerSetting.title, oldValue, value)
     }
 
     override fun onSmallestPlateWeightClicked() = handlePickerSettingClicked(SettingsContract.PickerSetting.SMALLEST_PLATE_WEIGHT)
@@ -64,7 +78,22 @@ class SettingsPresenter : BasePresenter<SettingsContract.View>(), SettingsContra
             SettingsContract.PickerSetting.SMALLEST_PLATE_WEIGHT -> settings.getSmallestPlateOptions()
         }
 
+        logSettingClicked(pickerSetting.title)
         view.showPickerDialog(title, pickerOptions, pickerSetting)
+    }
+
+    private fun logSettingClicked(settingName: String) {
+        val params = HashMap<String, String>()
+        params["setting"] = settingName
+        view.logEvent("setting_clicked", params)
+    }
+
+    private fun logSettingChanged(settingName: String, oldValue: String, newValue: String) {
+        val params = HashMap<String, String>()
+        params["setting"] = settingName
+        params["old_value"] = oldValue
+        params["new_value"] = newValue
+        view.logEvent("setting_clicked", params)
     }
 
     private fun isMetricUnitOn(): Boolean = settings.metricEnabled.get()
