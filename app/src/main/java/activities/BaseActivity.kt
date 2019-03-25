@@ -19,13 +19,13 @@ abstract class BaseActivity<P : Contract.Presenter<Contract.View>> : AppCompatAc
         analytics = FirebaseAnalytics.getInstance(this)
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
         presenter!!.attachView(this)
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onPause() {
+        super.onPause()
         presenter!!.dropView()
     }
 
