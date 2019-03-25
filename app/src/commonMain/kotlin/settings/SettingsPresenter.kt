@@ -31,6 +31,12 @@ class SettingsPresenter : BasePresenter<SettingsContract.View>(), SettingsContra
     override fun onMetricSettingClicked() = handlePickerSettingClicked(SettingsContract.PickerSetting.WEIGHT_UNIT)
 
     override fun onPickerOptionSelected(pickerSetting: SettingsContract.PickerSetting, value: String) {
+        val oldValue = when (pickerSetting) {
+            SettingsContract.PickerSetting.WEIGHT_UNIT -> settings.getWeightUnitString()
+            SettingsContract.PickerSetting.BAR_WEIGHT -> settings.barWeight.get().toString()
+            SettingsContract.PickerSetting.SMALLEST_PLATE_WEIGHT -> settings.smallestPlateWeight.get().toString()
+        }
+
         when (pickerSetting) {
             SettingsContract.PickerSetting.WEIGHT_UNIT -> {
                 val isMetric = value == GlobalSettings.UNIT_KG
@@ -43,13 +49,7 @@ class SettingsPresenter : BasePresenter<SettingsContract.View>(), SettingsContra
             SettingsContract.PickerSetting.SMALLEST_PLATE_WEIGHT -> settings.smallestPlateWeight.set(value)
         }
         updateUI()
-
-        val oldValue = when (pickerSetting) {
-            SettingsContract.PickerSetting.WEIGHT_UNIT -> settings.getWeightUnitString()
-            SettingsContract.PickerSetting.BAR_WEIGHT -> settings.barWeight.get().toString()
-            SettingsContract.PickerSetting.SMALLEST_PLATE_WEIGHT -> settings.smallestPlateWeight.get().toString()
-        }
-        logSettingChanged(pickerSetting.title, oldValue, value)
+        if (value != oldValue) logSettingChanged(pickerSetting.title, oldValue, value)
     }
 
     override fun onSmallestPlateWeightClicked() = handlePickerSettingClicked(SettingsContract.PickerSetting.SMALLEST_PLATE_WEIGHT)
@@ -93,7 +93,7 @@ class SettingsPresenter : BasePresenter<SettingsContract.View>(), SettingsContra
         params["setting"] = settingName
         params["old_value"] = oldValue
         params["new_value"] = newValue
-        view.logEvent("setting_clicked", params)
+        view.logEvent("setting_changed", params)
     }
 
     private fun isMetricUnitOn(): Boolean = settings.metricEnabled.get()

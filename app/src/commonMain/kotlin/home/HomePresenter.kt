@@ -29,7 +29,7 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
         val endWeight = generateOneEndOfBarWeight(inputWeight, settings.barWeight.get())
 
         val eventParams = HashMap<String, String>()
-        eventParams["input_weight"] = endWeight.toString()
+        eventParams["input_weight"] = inputWeight.toString()
         view.logEvent("calculate_weight", eventParams)
         view.displayWeight(generatePlateSet(endWeight, availablePlates, settings.conroyModeEnabled.get()))
     }
