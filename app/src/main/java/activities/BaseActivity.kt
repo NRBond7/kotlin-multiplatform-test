@@ -41,6 +41,6 @@ abstract class BaseActivity<P : Contract.Presenter<Contract.View>> : AppCompatAc
         params.keys.forEach {
             bundle.putString(it, params[it])
         }
-        analytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
+        analytics.logEvent(eventName, bundle)
     }
 }
