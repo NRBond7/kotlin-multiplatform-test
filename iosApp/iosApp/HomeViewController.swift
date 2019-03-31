@@ -1,6 +1,7 @@
 import UIKit
 import main
 import MaterialComponents
+import Crashlytics
 
 class HomeViewController: BaseViewController<HomeContractPresenter>, HomeContractView, UITextFieldDelegate {
     
@@ -13,7 +14,7 @@ class HomeViewController: BaseViewController<HomeContractPresenter>, HomeContrac
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        weightField.addTarget(self, action: #selector(HomeViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged
+        weightField.addTarget(self, action: #selector(HomeViewController.textFieldDidChange(_:)), for: UIControl.Event.editingChanged
         )
         weightField.delegate = self
         
