@@ -4,7 +4,7 @@ abstract class BasePresenter<V : Contract.View> : Contract.Presenter<Contract.Vi
 
     lateinit var view: V
 
-    // onStart
+    // onStart, viewWillAppear
     override fun attachView(view: Contract.View) {
         this.view = view as V
         onViewTaken()
@@ -14,7 +14,7 @@ abstract class BasePresenter<V : Contract.View> : Contract.Presenter<Contract.Vi
         view.logScreenLoad(screenName())
     }
 
-    // onStop
+    // onStop, viewWillDisappear
     override fun dropView() {
         onViewDropped()
     }

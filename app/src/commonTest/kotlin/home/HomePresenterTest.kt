@@ -166,16 +166,12 @@ class HomePresenterTest {
     }
 
     private fun generateConroyPlateListHelper(weightList: List<Double>, barWeight: Double, availablePlates: List<Plate>) {
-        weightList.forEach {
-            val endWeight = presenter.generateOneEndOfBarWeight(it, barWeight)
+        weightList.forEach { weight ->
+            val endWeight = presenter.generateOneEndOfBarWeight(weight, barWeight)
             for (x in 1..100) {
                 val plateList = presenter.generatePlateSet(endWeight, availablePlates, true)
                 assertEquals(endWeight, plateList.sumByDouble { it.weight })
             }
         }
-    }
-
-    @Test fun onWeightInput() {
-
     }
 }
