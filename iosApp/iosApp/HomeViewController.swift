@@ -9,6 +9,7 @@ class HomeViewController: BaseViewController<HomeContractPresenter>, HomeContrac
     
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var weightField: MDCTextField!
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var plateView: BarbellPlatesView!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,8 +56,14 @@ class HomeViewController: BaseViewController<HomeContractPresenter>, HomeContrac
         weightField.text = weight
     }
     
-    func displayWeight(plates: [Plate]) {
+    func displayWeight(plates: [Plate], errorText: String) {
         plateView.updatePlates(plates: plates)
+        errorLabel.text = errorText.isEmpty ? " " : errorText
+        if (errorText.isEmpty) {
+            weightLabel.textColor = UIColor(named: "ColorSecondary")
+        } else {
+            weightLabel.textColor = .red
+        }
     }
     
     @objc func doneWithNumberPad() {

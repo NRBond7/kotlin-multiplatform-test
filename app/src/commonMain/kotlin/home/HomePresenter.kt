@@ -8,6 +8,10 @@ import settings.GlobalSettings
 
 class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter  {
 
+    companion object {
+        private const val INPUT_ERROR_WEIGHT_ROUNDED = "Weight was rounded down to "
+    }
+
     lateinit var settings: GlobalSettings
 
     override fun attachView(view: Contract.View) {
@@ -27,11 +31,17 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
         val inputWeight = if (weight.isNotEmpty()) weight.toDouble() else 0.0
         val availablePlates = createAvailablePlates(settings.metricEnabled.get(), settings.smallestPlateWeight.get())
         val endWeight = generateOneEndOfBarWeight(inputWeight, settings.barWeight.get())
+        val plateSet = generatePlateSet(endWeight, availablePlates, settings.conroyModeEnabled.get())
+        val plateSetWeight = plateSet.sumByDouble { it.weight }
+        val wasWeightRounded = endWeight != plateSetWeight
+        val roundedWeight = plateSetWeight * 2 + settings.barWeight.get()
+        val errorText = if (wasWeightRounded) INPUT_ERROR_WEIGHT_ROUNDED + roundedWeight else ""
 
         val eventParams = HashMap<String, String>()
         eventParams["input_weight"] = inputWeight.toString()
         view.logEvent("calculate_weight", eventParams)
-        view.displayWeight(generatePlateSet(endWeight, availablePlates, settings.conroyModeEnabled.get()))
+
+        view.displayWeight(plateSet, errorText)
     }
 
     override fun handleSettingsClicked() {

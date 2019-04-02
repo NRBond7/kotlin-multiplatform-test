@@ -56,8 +56,9 @@ class HomeActivity : BaseActivity<HomeContract.Presenter>(), HomeContract.View {
 
     override fun openSettings() = startActivity(Intent(this, SettingsActivity::class.java))
 
-    override fun displayWeight(plates: List<Plate>) {
+    override fun displayWeight(plates: List<Plate>, errorText: String) {
         activity_home_plate_list.adapter = PlateAdapter(plates)
+        activity_home_text_input_layout.error = errorText
     }
 
     override fun initPresenter() {

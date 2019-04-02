@@ -6,7 +6,7 @@ import lib.Plate
 interface HomeContract : Contract {
 
     interface View : Contract.View {
-        fun displayWeight(plates: List<Plate>)
+        fun displayWeight(plates: List<Plate>, errorText: String)
         fun getInputWeight(): String
         fun openSettings()
         fun populateWeightField(hint: String, weight: String)

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -32,7 +31,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n0X-vR-h6g" userLabel="Barbel container">
-                                <rect key="frame" x="16" y="85" width="343" height="300"/>
+                                <rect key="frame" x="16" y="88.5" width="343" height="300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owb-u1-zi0" userLabel="Bar">
                                         <rect key="frame" x="0.0" y="141" width="80" height="20"/>
@@ -56,18 +55,27 @@
                                     <constraint firstItem="Avb-0j-kCg" firstAttribute="top" secondItem="n0X-vR-h6g" secondAttribute="top" id="ze7-Fj-RtZ"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kR-no-UcV" userLabel="Error label">
+                                <rect key="frame" x="16" y="77" width="343" height="16.5"/>
+                                <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="14"/>
+                                <color key="textColor" name="ColorPrimary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="7kR-no-UcV" firstAttribute="top" secondItem="5ru-on-jbA" secondAttribute="bottom" constant="8" id="3Rx-O9-r45"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="n0X-vR-h6g" secondAttribute="trailing" constant="16" id="Jcl-PH-M6d"/>
                             <constraint firstItem="5ru-on-jbA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="OQ2-fb-YTm"/>
                             <constraint firstItem="MQ8-OT-IYF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="V2L-KI-h6r"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5ru-on-jbA" secondAttribute="trailing" constant="16" id="fTA-9t-ROT"/>
                             <constraint firstItem="5ru-on-jbA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="g8E-jg-Zpg"/>
-                            <constraint firstItem="n0X-vR-h6g" firstAttribute="top" secondItem="5ru-on-jbA" secondAttribute="bottom" constant="16" id="hWK-TQ-Etj"/>
+                            <constraint firstItem="n0X-vR-h6g" firstAttribute="top" secondItem="7kR-no-UcV" secondAttribute="bottom" constant="-5" id="hWK-TQ-Etj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7kR-no-UcV" secondAttribute="trailing" constant="16" id="ica-Sc-Gg8"/>
                             <constraint firstItem="5ru-on-jbA" firstAttribute="top" secondItem="MQ8-OT-IYF" secondAttribute="bottom" constant="4" id="s6K-VX-Cre"/>
                             <constraint firstItem="MQ8-OT-IYF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="sLZ-Co-9jb"/>
                             <constraint firstItem="n0X-vR-h6g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="tSe-Hr-Sy8"/>
+                            <constraint firstItem="7kR-no-UcV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="wHO-Eq-aeS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MQ8-OT-IYF" secondAttribute="trailing" constant="16" id="zcZ-BG-hlC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -82,6 +90,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="errorLabel" destination="7kR-no-UcV" id="YXq-dH-wDA"/>
                         <outlet property="plateView" destination="Avb-0j-kCg" id="GSl-nW-9jL"/>
                         <outlet property="weightField" destination="5ru-on-jbA" id="59W-TX-BWe"/>
                         <outlet property="weightLabel" destination="MQ8-OT-IYF" id="55J-4D-Gq1"/>
