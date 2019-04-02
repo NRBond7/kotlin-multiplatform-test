@@ -1,5 +1,7 @@
 package activities
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_settings.*
 import org.jetbrains.anko.selector
@@ -7,12 +9,15 @@ import sample.R
 import settings.SettingsContract
 import settings.SettingsPresenter
 
+
 class SettingsActivity : BaseActivity<SettingsPresenter>(), SettingsContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
         activity_settings_toolbar.setNavigationOnClickListener { onBackPressed() }
+        activity_settings_patronage.setOnClickListener { presenter!!.onDonateClicked() }
+        activity_settings_contact_container.setOnClickListener { presenter!!.onEmailClicked() }
         activity_settings_metric_container.setOnClickListener { presenter!!.onMetricSettingClicked() }
         activity_settings_bar_weight_container.setOnClickListener { presenter!!.onBarbellWeightClicked() }
         activity_settings_smallest_plate_weight_container.setOnClickListener { presenter!!.onSmallestPlateWeightClicked() }
@@ -24,9 +29,15 @@ class SettingsActivity : BaseActivity<SettingsPresenter>(), SettingsContract.Vie
         presenter = SettingsPresenter()
     }
 
-    override fun populateSettings(unit: String, barbellTitle: String, barbellWeight: String,
+    override fun openDonationScreen() = startActivity(Intent(this, DonationActivity::class.java ))
+
+    override fun openEmail(email: String) =
+            startActivity(Intent(Intent.ACTION_SENDTO).setData(Uri.parse("mailto:$email")))
+
+    override fun populateSettings(email: String, unit: String, barbellTitle: String, barbellWeight: String,
                                   plateWeightTitle: String, plateWeight: String, conroyModeEnabled: Boolean) {
 
+        activity_settings_contact_email.text = email
         activity_settings_weight_unit_value.text = unit
         activity_settings_bar_weight_title.text = barbellTitle
         activity_settings_bar_weight_value.text = barbellWeight

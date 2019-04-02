@@ -5,6 +5,10 @@ import base.Contract
 
 class SettingsPresenter : BasePresenter<SettingsContract.View>(), SettingsContract.Presenter {
 
+    companion object {
+        private const val EMAIL = "noah@noahbond.dev"
+    }
+
     lateinit var settings: GlobalSettings
 
     override fun attachView(view: Contract.View) {
@@ -24,6 +28,16 @@ class SettingsPresenter : BasePresenter<SettingsContract.View>(), SettingsContra
         view.setConroyMode(newValue)
         logSettingClicked("Conroy mode")
         logSettingChanged("Conroy mode", getBooleanText(currentValue), getBooleanText(newValue))
+    }
+
+    override fun onDonateClicked() {
+        view.logEvent("donate_clicked", mapOf())
+        view.openDonationScreen()
+    }
+
+    override fun onEmailClicked() {
+        view.logEvent("email_clicked", mapOf())
+        view.openEmail(EMAIL)
     }
 
     private fun getBooleanText(on: Boolean) : String = if (on) "on" else "off"
@@ -56,6 +70,7 @@ class SettingsPresenter : BasePresenter<SettingsContract.View>(), SettingsContra
 
     private fun updateUI() {
         view.populateSettings(
+                EMAIL,
                 settings.getWeightUnitString(),
                 getBarbellTitle(),
                 settings.barWeight.get().toString(),

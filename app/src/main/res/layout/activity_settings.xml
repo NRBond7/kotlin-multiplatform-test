@@ -29,6 +29,67 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
 
+        <TextView
+            android:id="@+id/activity_settings_patronage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/setting_height"
+            android:foreground="?selectableItemBackground"
+            android:paddingStart="@dimen/first_keyline"
+            android:paddingEnd="@dimen/first_keyline"
+            android:gravity="start|center_vertical"
+            android:drawableStart="@drawable/ic_action_donate"
+            android:drawableTint="@color/colorAccent"
+            android:drawablePadding="32dp"
+            android:text="@string/patronage"
+            style="@style/BodyText"
+            />
+
+        <LinearLayout
+            android:id="@+id/activity_settings_contact_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/setting_height"
+            android:paddingStart="@dimen/first_keyline"
+            android:paddingEnd="@dimen/first_keyline"
+            android:background="?selectableItemBackground"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_action_email"
+                android:tint="@color/colorAccent"
+                android:contentDescription="@string/contact_me"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_me"
+                    style="@style/BodyText"
+                    />
+
+                <TextView
+                    android:id="@+id/activity_settings_contact_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/SubheaderText"
+                    tools:text="noah@noahbond.dev"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
         <LinearLayout
             android:id="@+id/activity_settings_metric_container"
             android:layout_width="match_parent"
@@ -128,7 +189,8 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:orientation="vertical"
                 >
 
@@ -136,7 +198,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/settings_field_conroy_mode"
-                    android:layout_gravity="start|center_vertical"
                     style="@style/BodyText"
                     />
 

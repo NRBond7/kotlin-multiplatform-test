@@ -20,6 +20,7 @@
         </activity>
         <activity android:name="home.HomeActivity"/>
         <activity android:name="activities.SettingsActivity"/>
+        <activity android:name="activities.DonationActivity"/>
     </application>
 
 </manifest>

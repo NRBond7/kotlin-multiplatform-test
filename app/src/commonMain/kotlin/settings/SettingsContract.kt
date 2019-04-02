@@ -11,7 +11,9 @@ interface SettingsContract {
     }
 
     interface View : Contract.View {
-        fun populateSettings(unit: String, barbellTitle: String, barbellWeight: String,
+        fun openDonationScreen()
+        fun openEmail(email: String)
+        fun populateSettings(email: String, unit: String, barbellTitle: String, barbellWeight: String,
                              plateWeightTitle: String, plateWeight: String, conroyModeEnabled: Boolean)
         fun setConroyMode(conroyModeEnabled: Boolean)
         fun showPickerDialog(title: String, options: List<String>, pickerSetting: PickerSetting)
@@ -20,6 +22,8 @@ interface SettingsContract {
     interface Presenter : Contract.Presenter<Contract.View> {
         fun onBarbellWeightClicked()
         fun onConroyModeClicked()
+        fun onDonateClicked()
+        fun onEmailClicked()
         fun onMetricSettingClicked()
         fun onPickerOptionSelected(pickerSetting: PickerSetting, value: String)
         fun onSmallestPlateWeightClicked()

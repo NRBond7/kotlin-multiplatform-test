@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Plate Calc</string>
     <string name="settings">Settings</string>
+    <string name="donation">Patronage</string>
     <string name="settings_field_weight_unit">Weight unit</string>
     <string name="settings_field_conroy_mode">Conroy mode</string>
     <string name="settings_field_conroy_mode_desc">Plate randomization</string>
+    <string name="patronage">Patronage</string>
+    <string name="contact_me">Contact me</string>
 </resources>
