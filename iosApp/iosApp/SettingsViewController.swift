@@ -1,8 +1,11 @@
 import UIKit
 import main
+import MaterialComponents
 
 class SettingsViewController: BaseViewController<SettingsContractPresenter>, SettingsContractView, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    @IBOutlet weak var patronageIcon: UIImageView!
+    @IBOutlet weak var emailText: UILabel!
     @IBOutlet weak var weightUnitValue: UITextView!
     @IBOutlet weak var barbwellWeightHeader: UILabel!
     @IBOutlet weak var barbellWeightValue: UITextView!
@@ -11,12 +14,14 @@ class SettingsViewController: BaseViewController<SettingsContractPresenter>, Set
     @IBOutlet weak var conroyModeSwitch: UISwitch!
     
     private let picker: UIPickerView = UIPickerView()
-    
+
     private var currentSetting: SettingsContractPickerSetting? = nil
     private var options: [String] = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        patronageIcon.tintColor = UIColor(named: "ColorSecondary")
         
         picker.showsSelectionIndicator = true
         picker.delegate = self
@@ -46,7 +51,8 @@ class SettingsViewController: BaseViewController<SettingsContractPresenter>, Set
         presenter = SettingsPresenter()
     }
     
-    func populateSettings(unit: String, barbellTitle: String, barbellWeight: String, plateWeightTitle: String, plateWeight: String, conroyModeEnabled: Bool) {
+    func populateSettings(email: String, unit: String, barbellTitle: String, barbellWeight: String, plateWeightTitle: String, plateWeight: String, conroyModeEnabled: Bool) {
+        emailText.text = email
         weightUnitValue.text = unit
         barbwellWeightHeader.text = barbellTitle
         barbellWeightValue.text = barbellWeight
@@ -57,6 +63,19 @@ class SettingsViewController: BaseViewController<SettingsContractPresenter>, Set
     
     func setConroyMode(conroyModeEnabled: Bool) {
         conroyModeSwitch.isOn = conroyModeEnabled
+    }
+    
+    func openDonationScreen() {
+        let viewController:UIViewController = UIStoryboard(name: "Patronage", bundle: nil).instantiateViewController(withIdentifier: "Patronage") as! PatronageViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func openEmail(email: String) {
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = email
+        let message = MDCSnackbarMessage()
+        message.text = "Email copied to clipboard"
+        MDCSnackbarManager.show(message)
     }
     
     func showPickerDialog(title: String, options: [String], pickerSetting: SettingsContractPickerSetting) {
@@ -74,6 +93,14 @@ class SettingsViewController: BaseViewController<SettingsContractPresenter>, Set
         
         picker.reloadAllComponents()
         picker.selectRow(index, inComponent: 0, animated: false)
+    }
+    
+    @IBAction func onContactClicked(_ sender: Any) {
+        presenter!.onEmailClicked()
+    }
+    
+    @IBAction func onPatronageClicked(_ sender: Any) {
+        presenter!.onDonateClicked()
     }
     
     @IBAction func onWeightUnitClicked(_ sender: Any) {

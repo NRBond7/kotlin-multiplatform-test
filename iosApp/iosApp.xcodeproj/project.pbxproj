@@ -13,6 +13,8 @@
 		6D3DEE07223D93CF007313E3 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D3DEE06223D93CF007313E3 /* Settings.storyboard */; };
 		6D4518E622513B8C00C8A883 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D4518E522513B8C00C8A883 /* GoogleService-Info.plist */; };
 		6D4518E722513B8C00C8A883 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D4518E522513B8C00C8A883 /* GoogleService-Info.plist */; };
+		6D4518E9225526D000C8A883 /* Patronage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D4518E8225526D000C8A883 /* Patronage.storyboard */; };
+		6D4518EB225526F700C8A883 /* PatronageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4518EA225526F700C8A883 /* PatronageViewController.swift */; };
 		6D4F11D02246F8A20029A638 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B25CF2840AEC94DF856489 /* Pods_iosApp.framework */; };
 		6D5F94112246EB98008F0C7D /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6D9F8F9422223A760044B4C3 /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9F8F9322223A760044B4C3 /* main.framework */; };
@@ -60,6 +62,8 @@
 		6D3DEE04223D92F3007313E3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6D3DEE06223D93CF007313E3 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		6D4518E522513B8C00C8A883 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6D4518E8225526D000C8A883 /* Patronage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Patronage.storyboard; sourceTree = "<group>"; };
+		6D4518EA225526F700C8A883 /* PatronageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatronageViewController.swift; sourceTree = "<group>"; };
 		6D5F940A2246EAB2008F0C7D /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D5F940C2246EACC008F0C7D /* MaterialComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MaterialComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D7BDB50221B67C2001D8F9D /* MaterialComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MaterialComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +175,8 @@
 				F861D7EC207FA4100085E80D /* Info.plist */,
 				F861D7E9207FA4100085E80D /* LaunchScreen.storyboard */,
 				6D3DEE06223D93CF007313E3 /* Settings.storyboard */,
+				6D4518E8225526D000C8A883 /* Patronage.storyboard */,
+				6D4518EA225526F700C8A883 /* PatronageViewController.swift */,
 				6D3DEE04223D92F3007313E3 /* SettingsViewController.swift */,
 				6D3DEE02223D760A007313E3 /* Util.swift */,
 			);
@@ -291,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F861D7EB207FA4100085E80D /* LaunchScreen.storyboard in Resources */,
+				6D4518E9225526D000C8A883 /* Patronage.storyboard in Resources */,
 				6DFC8EBB221B605D00030C6D /* Assets.xcassets in Resources */,
 				6DFC8EBD221B61D200030C6D /* Podfile in Resources */,
 				F861D7E6207FA40F0085E80D /* Home.storyboard in Resources */,
@@ -406,6 +413,7 @@
 				6D3DEE01223D73E8007313E3 /* BarbellPlatesView.swift in Sources */,
 				6DA743662227304F005A439B /* BaseViewController.swift in Sources */,
 				6D3DEE05223D92F3007313E3 /* SettingsViewController.swift in Sources */,
+				6D4518EB225526F700C8A883 /* PatronageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
