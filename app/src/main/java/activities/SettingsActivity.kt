@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_settings.*
+import org.jetbrains.anko.email
 import org.jetbrains.anko.selector
 import sample.R
 import settings.SettingsContract
@@ -31,8 +32,7 @@ class SettingsActivity : BaseActivity<SettingsPresenter>(), SettingsContract.Vie
 
     override fun openDonationScreen() = startActivity(Intent(this, DonationActivity::class.java ))
 
-    override fun openEmail(email: String) =
-            startActivity(Intent(Intent.ACTION_SENDTO).setData(Uri.parse("mailto:$email")))
+    override fun openEmail(email: String) { email(email) }
 
     override fun populateSettings(email: String, unit: String, barbellTitle: String, barbellWeight: String,
                                   plateWeightTitle: String, plateWeight: String, conroyModeEnabled: Boolean) {
